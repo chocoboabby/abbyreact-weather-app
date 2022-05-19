@@ -1,0 +1,37 @@
+.MainTemp {
+  position: relative;
+  left: 10px;
+  bottom: 55px;
+}
+
+.MainTemp #city-name {
+  text-transform: capitalize;
+  position: relative;
+  bottom: 120px;
+}
+
+.MainTemp #celcius-temp {
+  font-size: 15px;
+  position: relative;
+  bottom: 25px;
+  margin: 0 auto;
+  cursor: default;
+  color: #212529;
+}
+
+.MainTemp #fahrenheit-temp {
+  font-size: 15px;
+  position: relative;
+  bottom: 25px;
+  left: 5px;
+  margin: 0 auto;
+  cursor: default;
+  color: #212529;
+}
+
+.MainTemp #weather-icon {
+  position: relative;
+  left: 200px;
+  bottom: 100px;
+  width: 100px;
+}

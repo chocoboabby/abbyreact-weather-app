@@ -1,10 +1,14 @@
+import React from "react";
 import "./App.css";
+import MainTemp from "./MainTemp";
+import Weather from "./Weather";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <div className="container">
-        <h1>Hello Test</h1>
+        <Weather />
+        <MainTemp />
         <div>
           <a
             href="https://github.com/chocoboabby/abbyreact-weather-app"
@@ -19,5 +23,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
