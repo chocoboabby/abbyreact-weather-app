@@ -35,3 +35,15 @@
   bottom: 100px;
   width: 100px;
 }
+
+.MainTemp .location-pin {
+  color: red;
+  position: relative;
+  left: 10px;
+  top: 5px;
+  font-size: 25px;
+}
+
+.MainTemp .location-pin:hover {
+  color: gray;
+}

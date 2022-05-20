@@ -34,7 +34,7 @@ export default function MainTemp() {
                 value="Search"
                 className="btn btn-outline-dark search-btn"
               />
-              <i class="fa-solid fa-map-pin"></i>
+              <i className="fa-solid fa-map-pin location-pin"></i>
             </form>
           </div>
         </div>

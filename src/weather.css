@@ -1,0 +1,11 @@
+.Weather .date-time {
+  position: relative;
+  margin: 0 auto;
+  color: red;
+  list-style: none;
+}
+
+.Weather .weather-description {
+  color: blueviolet;
+  list-style: none;
+}

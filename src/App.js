@@ -1,12 +1,14 @@
 import React from "react";
 import "./App.css";
 import MainTemp from "./MainTemp";
+import Weather from "./Weather";
 
 export default function App() {
   return (
     <div className="App">
       <div className="container">
         <MainTemp />
+        <Weather />
         <div>
           <a
             href="https://github.com/chocoboabby/abbyreact-weather-app"
