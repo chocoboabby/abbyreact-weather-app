@@ -24,6 +24,18 @@ export default function MainTemp() {
               alt="sun"
             />
             <h2 id="city-name">Baguio, PH</h2>
+          </div>{" "}
+          <div className="col-6">
+            <form id="city-form">
+              <input type="search" placeholder="Enter a city" id="city-input" />
+              <br />
+              <input
+                type="submit"
+                value="Search"
+                className="btn btn-outline-dark search-btn"
+              />
+              <i className="fa-solid fa-map-pin locationPin"></i>
+            </form>
           </div>
         </div>
       </div>
