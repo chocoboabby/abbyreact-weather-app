@@ -1,6 +1,10 @@
-.Weather .date-time {
+.Weather {
   position: relative;
-  margin: 0 auto;
+  right: 30px;
+  bottom: 100px;
+}
+
+.Weather .date-time {
   color: red;
   list-style: none;
 }

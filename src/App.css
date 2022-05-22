@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+
+body,
+html {
+  font-family: "Special Elite", cursive;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
 .App {
   position: relative;
   top: 100px;

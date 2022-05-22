@@ -1,19 +1,35 @@
 .MainTemp {
   position: relative;
   left: 10px;
-  bottom: 55px;
+  bottom: -1px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.MainTemp #main-temp {
+  text-transform: capitalize;
+  position: relative;
+  font-size: 80px;
 }
 
 .MainTemp #city-name {
   text-transform: capitalize;
   position: relative;
-  bottom: 120px;
+  bottom: 110px;
+  font-size: 20px;
 }
 
 .MainTemp #celcius-temp {
   font-size: 15px;
   position: relative;
-  bottom: 25px;
+  left: 10px;
+  bottom: 12px;
   margin: 0 auto;
   cursor: default;
   color: #212529;
@@ -22,8 +38,8 @@
 .MainTemp #fahrenheit-temp {
   font-size: 15px;
   position: relative;
-  bottom: 25px;
-  left: 5px;
+  bottom: 12px;
+  left: 15px;
   margin: 0 auto;
   cursor: default;
   color: #212529;
@@ -31,7 +47,7 @@
 
 .MainTemp #weather-icon {
   position: relative;
-  left: 200px;
+  left: 150px;
   bottom: 100px;
   width: 100px;
 }
@@ -40,10 +56,15 @@
   color: red;
   position: relative;
   left: 10px;
-  top: 5px;
+  top: 15px;
   font-size: 25px;
 }
 
 .MainTemp .location-pin:hover {
   color: gray;
+}
+
+.MainTemp .search-btn {
+  position: relative;
+  top: 10px;
 }

@@ -7,17 +7,21 @@ export default function App() {
   return (
     <div className="App">
       <div className="container">
-        <MainTemp />
-        <Weather />
+        <div className="card">
+          <div className="card-body">
+            <MainTemp />
+            <Weather />
+          </div>
+        </div>
         <div>
           <a
             href="https://github.com/chocoboabby/abbyreact-weather-app"
             target="_blank"
             rel="noreferrer"
           >
-            Open source code
+            <small>Open source code</small>
           </a>{" "}
-          by Abby Dela Fuente
+          <small>by Abby Dela Fuente</small>
         </div>
       </div>
     </div>
