@@ -1,44 +1,73 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./maintemp.css";
 
-export default function MainTemp() {
-  return (
-    <div className="MainTemp">
-      <div className="container">
-        <div className="row">
-          <div className="col-6">
-            <h1>
-              <span id="main-temp">21</span>
-              <span>
-                <a href="/" id="celcius-temp">
-                  °C |
-                </a>
-                <a href="/" id="fahrenheit-temp">
-                  °F
-                </a>
-              </span>
-            </h1>
-            <img
-              src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/033/493/original/sunimg.png?1651717721"
-              id="weather-icon"
-              alt="sun"
-            />
-            <h2 id="city-name">Baguio, PH</h2>
-          </div>{" "}
-          <div className="col-6">
-            <form id="city-form">
-              <input type="search" placeholder="Enter a city" id="city-input" />
-              <br />
-              <input
-                type="submit"
-                value="Search"
-                className="btn btn-outline-dark search-btn"
+export default function MainTemp(props) {
+  let [weather, setWeather] = useState({ ready: false });
+
+  function handleResponse(response) {
+    console.log(response.data);
+    setWeather({
+      ready: true,
+      temp: response.data.main.temp,
+      city: response.data.name,
+      country: response.data.sys.country,
+      icon: `https://s3.amazonaws.com/shecodesio-production/uploads/files/000/033/493/original/sunimg.png?1651717721`,
+      icondescription: response.data.weather[0].desciption,
+    });
+  }
+
+  if (weather.ready) {
+    return (
+      <div className="MainTemp">
+        <div className="container">
+          <div className="row">
+            <div className="col-6">
+              <h1>
+                <span id="main-temp">{Math.round(weather.temp)}</span>
+                <span>
+                  <a href="/" id="celcius-temp">
+                    °C |
+                  </a>
+                  <a href="/" id="fahrenheit-temp">
+                    °F
+                  </a>
+                </span>
+              </h1>
+              <img
+                src={weather.icon}
+                id="weather-icon"
+                alt={weather.icondescription}
               />
-              <i className="fa-solid fa-map-pin location-pin"></i>
-            </form>
+              <h2 id="city-name">
+                {weather.city}, {weather.country}
+              </h2>
+            </div>{" "}
+            <div className="col-6">
+              <form id="city-form">
+                <input
+                  type="search"
+                  placeholder="Enter a city"
+                  id="city-input"
+                />
+                <br />
+                <input
+                  type="submit"
+                  value="Search"
+                  className="btn btn-outline-dark search-btn"
+                />
+                <i className="fa-solid fa-map-pin location-pin"></i>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    let apiKey = "76bd1c0ff8311a8d7f2ae10658044361";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.cityName}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+
+    return "Loading....";
+  }
 }

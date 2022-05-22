@@ -9,7 +9,7 @@ export default function App() {
       <div className="container">
         <div className="card">
           <div className="card-body">
-            <MainTemp />
+            <MainTemp cityName="Davao" />
             <Weather />
           </div>
         </div>
