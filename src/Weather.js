@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import DateFormat from "./DateFormat";
 import "./weather.css";
 
 export default function Weather(props) {
@@ -8,6 +9,7 @@ export default function Weather(props) {
   function handleResponse(response) {
     setDescription({
       ready: true,
+      date: new Date(response.data.dt * 1000),
       feelslike: response.data.main.feels_like,
       humidity: response.data.main.humidity,
       windspeed: response.data.wind.speed,
@@ -23,7 +25,9 @@ export default function Weather(props) {
             <div className="col-6">
               {" "}
               <ul className="date-time">
-                <li id="time-date">May 4, 2022 | Wednesday | 15:00</li>
+                <li id="time-date">
+                  <DateFormat date={description.date} />
+                </li>
                 <li className="text-capitalize">{description.weathertype}</li>
               </ul>
             </div>{" "}
