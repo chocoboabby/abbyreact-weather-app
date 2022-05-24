@@ -5,6 +5,7 @@ import "./weather.css";
 
 export default function Weather(props) {
   let [description, setDescription] = useState({ ready: false });
+  let [city, setCity] = useState(props.cityName);
 
   function handleResponse(response) {
     setDescription({
@@ -15,6 +16,21 @@ export default function Weather(props) {
       windspeed: response.data.wind.speed,
       weathertype: response.data.weather[0].description,
     });
+  }
+
+  function search() {
+    let apiKey = "76bd1c0ff8311a8d7f2ae10658044361";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function changeCity(event) {
+    setCity(event.target.value);
   }
 
   if (description.ready) {
@@ -31,9 +47,9 @@ export default function Weather(props) {
                 <li className="text-capitalize">{description.weathertype}</li>
               </ul>
             </div>{" "}
-            <div className="col-6">
-              <ul className="weather-description">
-                <li id="feelslike">
+            <div className="col-6" onSubmit={handleSubmit}>
+              <ul className="weather-description" onChange={changeCity}>
+                <li id="feelslike" onChange={changeCity}>
                   Feels like: {Math.round(description.feelslike)}°C
                 </li>
                 <li id="humidity">Humidity: {description.humidity}%</li>
@@ -47,10 +63,7 @@ export default function Weather(props) {
       </div>
     );
   } else {
-    let apiKey = "76bd1c0ff8311a8d7f2ae10658044361";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.cityName}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-
+    search();
     return "Loading....";
   }
 }

@@ -4,6 +4,7 @@ import "./maintemp.css";
 
 export default function MainTemp(props) {
   let [weather, setWeather] = useState({ ready: false });
+  let [city, setCity] = useState(props.cityName);
 
   function handleResponse(response) {
     console.log(response.data);
@@ -15,6 +16,21 @@ export default function MainTemp(props) {
       icon: `https://s3.amazonaws.com/shecodesio-production/uploads/files/000/033/493/original/sunimg.png?1651717721`,
       icondescription: response.data.weather[0].desciption,
     });
+  }
+
+  function search() {
+    let apiKey = "76bd1c0ff8311a8d7f2ae10658044361";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function changeCity(event) {
+    setCity(event.target.value);
   }
 
   if (weather.ready) {
@@ -44,11 +60,12 @@ export default function MainTemp(props) {
               </h2>
             </div>{" "}
             <div className="col-6">
-              <form id="city-form">
+              <form id="city-form" onSubmit={handleSubmit}>
                 <input
                   type="search"
                   placeholder="Enter a city"
                   id="city-input"
+                  onChange={changeCity}
                 />
                 <br />
                 <input
@@ -64,10 +81,7 @@ export default function MainTemp(props) {
       </div>
     );
   } else {
-    let apiKey = "76bd1c0ff8311a8d7f2ae10658044361";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.cityName}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-
+    search();
     return "Loading....";
   }
 }
